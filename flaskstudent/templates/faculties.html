@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}{{title}}{% endblock  %}
+{% block content %}
+    <div class="container">
+        <h2>{{title}}</h2>
+        <hr>
+       
+        <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Faculty Name</th>
+                <th>Action</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+            {% if faculties %}
+            {% for faculty in faculties %}
+            <tr>
+                <th>{{faculty.id}}</th>
+                <td>{{faculty.faculty_name}}</td>
+                <td>
+                    <a href="{{url_for('update_faculty', id=faculty.id)}}" class="btn btn-outline-success btn-small">update</a>
+                </td>
+              </tr>
+            {% endfor %}
+            
+            {% else %}
+                <tr>
+                    <td colspon="3"><h1>No Data</h1></td>
+                </tr>
+            {% endif %}
+              
+            </tbody>
+          </table>
+          <a href="{{url_for('add_faculty')}}" class="btn btn-outline-primary">New Faculty</a>
+
+    </div>
+{% endblock  %}

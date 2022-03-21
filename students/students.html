@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}{{title}}{% endblock  %}
+{% block content %}
+    <div class="container">
+        <h2>{{title}}</h2>
+        <hr>
+       
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Student ID</th>
+                <th scope="col">Student Name</th>
+                <th scope="col">Faculty</th>
+                <th scope="col">Student Image</th>
+                <th scope="col">Action</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+            {% if students %}
+            {% for std in students %}
+            <tr>
+                <th>{{std.student_id}}</th>
+                <td>{{std.student_name}}</td>
+                <td>{{std.faculty.faculty_name}}</td>
+                <td>
+                  <img src="{{url_for('static',filename="/images/".std.student_img)}}" alt="Images"/>
+
+                </td>
+                <td>
+                    <a href="#" class="btn btn-outline-success btn-small">update</a>
+                </td>
+              </tr>
+            {% endfor %}
+            
+            {% else %}
+                <tr>
+                    <td colspon="3"><h1>No Data</h1></td>
+                </tr>
+            {% endif %}
+              
+            </tbody>
+          </table>
+          <a href="{{url_for('add_student')}}" class="btn btn-outline-primary">New Student</a>
+
+    </div>
+{% endblock  %}

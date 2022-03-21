@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}{{title}}{% endblock  %}
+{% block content %}
+<div class="container">
+    <h2>{{title}}</h2>
+    <hr>
+    <form action="{{url_for('update_faculty', id=faculty.id)}}" method="POST">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Faculty name</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" value="{{faculty.faculty_name}}" name="faculty_name">
+         
+        </div>
+       
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+{% endblock  %}
